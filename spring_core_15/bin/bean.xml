@@ -1,0 +1,26 @@
+<beans> xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util" 
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        classpath:/org/springframework/beans/factory/xml/spring-beans.xsd
+        http://www.springframework.org/schema/util 
+        classpath:/org/springframework/beans/factory/xml/spring-util.xsd">
+    
+    <!-- Account Bean -->
+    <bean id="acc" class="com.mainapp.Account"> 
+    </bean>
+  
+    <!-- Employee Bean -->
+    <bean id="emp" class="com.mainapp.Employee">
+        <property name="account" ref="acc"></property>
+        <property name="url" value="jdbc:mysql://localhost"></property>
+        <property name="driverName" ref="mymap"></property>
+    </bean>
+
+    <!-- Map Bean -->
+    <util:map id="mymap" map-class="java.util.HashMap">
+        <entry key="mysql" value="com.mysql"></entry>
+        <entry key="oracle" value="com.oracle"></entry>
+    </util:map>
+</beans>

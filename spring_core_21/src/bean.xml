@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- Google Bean -->
+    <bean id="google" class="com.mainapp.Google">
+        <constructor-arg name="id" value="111" />
+        <constructor-arg name="headOffice" value="london" />
+        <constructor-arg name="listOfServiceCountry" ref="googleService" />
+    </bean>
+
+    <!-- Util List for Google -->
+    <util:list id="googleService" list-class="java.util.LinkedList">
+        <value>INDIA</value>
+        <value>China</value>
+        <value>USA</value>
+    </util:list>
+
+    <!-- Meta Bean -->
+    <bean id="meta" class="com.mainapp.Meta">
+        <constructor-arg name="id" value="111" />
+        <constructor-arg name="headOffice" value="london" />
+        <constructor-arg name="listOfServiceCountry" ref="MetaService" />
+        <constructor-arg name="empEmailName" ref="metaEmp" />
+    </bean>
+
+    <!-- Util Map for Meta Employee Email -->
+    <util:map id="metaEmp" map-class="java.util.HashMap">
+        <entry key="raju@emai.com" value="raju" />
+        <entry key="maju@emai.com" value="maju" />
+        <entry key="baju@emai.com" value="baju" />
+        <entry key="kaju@emai.com" value="kaju" />
+    </util:map>
+
+    <!-- Util List for Meta Services -->
+    <util:list id="MetaService" list-class="java.util.LinkedList">
+        <value>INDIA</value>
+        <value>China</value>
+        <value>USA</value>
+    </util:list>
+
+</beans>
